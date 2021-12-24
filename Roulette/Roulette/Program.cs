@@ -65,38 +65,38 @@ namespace Roulette
             switch (choice)
             {
                 case "1":
-                    Console.WriteLine("\r\nType Red or Black: ");
+                    Console.WriteLine("Type Red or Black: ");
                     balance += SpinRoulette("1", Console.ReadLine(), bet);
                     break;
                 case "2":
-                    Console.WriteLine("\r\nType Odd or Even: ");
+                    Console.WriteLine("Type Odd or Even: ");
                     balance += SpinRoulette("2", Console.ReadLine(), bet);
                     break;
                 case "3":
-                    Console.WriteLine("\r\nEnter a number: ");
+                    Console.WriteLine("Enter a number: ");
                     do
                     {
                         enteredNumber = int.Parse(Console.ReadLine());
                         if (enteredNumber < 0 || enteredNumber > 36)
                         {
-                            Console.WriteLine("\r\nEnter a number between 00 and 36: ");
+                            Console.WriteLine("Enter a number between 00 and 36: ");
                         }
                     } while (enteredNumber < 0 || enteredNumber > 36);
 
                     balance += SpinRoulette("3", enteredNumber.ToString(), bet);
                     break;
                 case "4":
-                    Console.WriteLine("\r\nType First or Second or Third: ");
+                    Console.WriteLine("Type First or Second or Third: ");
                     balance += SpinRoulette("4", Console.ReadLine(), bet);
                     break;
                 case "5":
-                    Console.WriteLine("\r\nType Low or High: ");
+                    Console.WriteLine("Type Low or High: ");
                     balance += SpinRoulette("5", Console.ReadLine(), bet);
                     break;
                 case "6":
-                    Console.WriteLine("\r\n*******************");
-                    Console.WriteLine("\r\n     Game Over"); 
-                    Console.WriteLine("\r\n*******************");
+                    Console.WriteLine("*******************");
+                    Console.WriteLine("     Game Over"); 
+                    Console.WriteLine("*******************");
                     Environment.Exit(0);
                     break;
             }
@@ -109,10 +109,10 @@ namespace Roulette
 
             int selectedNumber = WinningNumber();
 
-            if (selectedNumber == -1)
-                Console.WriteLine("\r\nWinning number is: 00");
+            if (selectedNumber == 0)
+                Console.WriteLine("Winning number is: 00");
             else
-                Console.WriteLine("\r\nWinning number is: " + selectedNumber);
+                Console.WriteLine("Winning number is: " + selectedNumber);
 
             if (input.Equals("00"))
             {
@@ -156,7 +156,7 @@ namespace Roulette
                     {
                         winningAmount = bet + 2 * bet;
                     }
-                    else if (input.Equals("third") && selectedNumber > 24 && selectedNumber < 37)
+                    else if (input.Equals("third") && selectedNumber > 24 && selectedNumber < 36)
                     {
                         winningAmount = bet + 2 * bet;
                     }
@@ -166,16 +166,16 @@ namespace Roulette
                     {
                         winningAmount = bet + bet;
                     }
-                    else if (input.Equals("high") && selectedNumber > 18 && selectedNumber < 37)
+                    else if (input.Equals("high") && selectedNumber > 18 && selectedNumber < 36)
                     {
                         winningAmount = bet + bet;
                     }
                     break;
             }
             if (winningAmount > 0)
-                Console.WriteLine("\r\nCongratulations! You Won: $" + winningAmount);
+                Console.WriteLine("Congratulations! You Won: " + winningAmount);
             else
-                Console.WriteLine("\r\nYou Lost: $" + bet);
+                Console.WriteLine("You Lost: " + bet);
 
             return winningAmount;
         }
