@@ -14,10 +14,10 @@ namespace Roulette
 
             while (balance != 0)
             {
-                Console.WriteLine("Enter Yourbet");
+                Console.WriteLine("Enter Your bet  (remember max bet is 60)");
 
                     bet = double.Parse(Console.ReadLine());
-                    if (bet <= 0 || bet > balance)
+                    if (bet <= 0 || bet > balance || bet > 60)
                     {
                         Console.WriteLine("Please Enter a valid bet amount");
                     }
@@ -46,7 +46,7 @@ namespace Roulette
                 Console.WriteLine("*******************");
             }
         }
-        private static string DisplayMenu()
+        static string DisplayMenu()
         {
             Console.WriteLine("Select a bet:");
             Console.WriteLine("1) Red/Black");
@@ -58,7 +58,7 @@ namespace Roulette
             return Console.ReadLine();
         }
 
-        private static double PlaceBet(string choice, double balance, double bet)
+        static double PlaceBet(string choice, double balance, double bet)
         {
             int enteredNumber;
 
@@ -103,13 +103,13 @@ namespace Roulette
             return balance;
         }
 
-        private static double SpinRoulette(string cases, string input, double bet)
+        static double SpinRoulette(string cases, string input, double bet)
         {
             double winningAmount = 0;
 
             int selectedNumber = WinningNumber();
 
-            if (selectedNumber == 0)
+            if (selectedNumber == -1)
                 Console.WriteLine("Winning number is: 00");
             else
                 Console.WriteLine("Winning number is: " + selectedNumber);
@@ -180,7 +180,7 @@ namespace Roulette
             return winningAmount;
         }
 
-        private static int WinningNumber()
+        static int WinningNumber()
         {
             Random r = new Random();
             return r.Next(0, 36);
